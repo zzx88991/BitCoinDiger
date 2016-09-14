@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bit Coin Digggger</title>
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+    </body>
+    <script type="text/javascript">
+        var socket = io('http://localhost:8080')
+        socket.on('message-from-server', function(evt){
+            document.body.appendChild(document.createTextNode(evt.greeting));
+        
+            socket.emit('message-from-client',{
+                greeting: 'Hello from client'
+            });
+        });
+
+    </script>
+</html>
